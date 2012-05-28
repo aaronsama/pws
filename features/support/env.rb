@@ -34,11 +34,13 @@ end
 # Hacks
 
 Before('@slow-hack') do
-  @aruba_io_wait_seconds = 4
+  @aruba_io_wait_seconds = 4.5
+  @aruba_timeout_seconds = 4.5
 end
 
 Before('@very-slow-hack') do
-  @aruba_io_wait_seconds = 8
+  @aruba_io_wait_seconds = 9
+  @aruba_timeout_seconds = 10
 end
 
 Before('@wait-11s') do

@@ -29,7 +29,8 @@ Feature: Master
     And  the output should contain "Please enter the new master password"
     And  the output should contain "again"
     And  the output should contain "don't match"
-  
+ 
+  @slow-hack 
   Scenario: Change the master password, already passing it as command line parameter (not recommended)
     Given A safe exists with master password "my_master_password"
     When I run `pws master my_new_master_password` interactively

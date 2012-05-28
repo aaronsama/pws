@@ -4,6 +4,7 @@ Feature: Update
   I want to update a password entry and generate the new password
 
   @wait-11s
+  @slow-hack
   Scenario: Generate a new password for "github" and get it
     Given A safe exists with master password "my_master_password" and a key "github" with password "old_password"
     When I run `pws update-gen github` interactively
@@ -27,6 +28,7 @@ Feature: Update
     And  the output should contain "NO ACCESS"
     
   @wait-11s
+  @slow-hack
   Scenario: Generate a new password for "github" and get it
     Given A safe exists with master password "my_master_password" and a key "github" with password "old_password"
     When I run `pws update-gen github` interactively

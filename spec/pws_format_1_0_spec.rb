@@ -176,8 +176,9 @@ describe PWS::Format::V1_0 do
       password = "12345678"
       salt     = SecureRandom.random_bytes(64)
       iterations = SecureRandom.random_number(10_000)
-      PWS::Format::V1_0.kdf_ruby(password, salt, iterations).should ==
-        PWS::Format::V1_0.kdf_openssl(password, salt, iterations)
+      PWS::Format::V1_0.kdf_ruby(password, salt, iterations).unpack('a*').should ==
+        PWS::Format::V1_0.kdf_openssl(password, salt, iterations).unpack('a*')
+      # unpack because 1.9.2 raises "incompatible character encodings: ASCII-8BIT and US-ASCII"
     end
   end
 end

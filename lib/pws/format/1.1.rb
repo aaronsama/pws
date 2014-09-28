@@ -110,6 +110,7 @@ class PWS
           number_of_dummy_bytes, data_size, raw_data = saved_data.unpack('N N a*')
           i = number_of_dummy_bytes
 
+
           usernames, passwords, names, timestamps = 4.times.map{
             data_size.times.map{
               next_element, i = get_next_data_string(raw_data, i)
@@ -117,10 +118,12 @@ class PWS
             }
           }
 
+          puts [usernames,passwords].to_s
+
           Hash[
             names.zip(
-              passwords.zip(usernames,timestamps).map{ |u,e,f|
-                { username: u.to_s, password: e.to_s, timestamp: f.to_i }
+              passwords.zip(usernames,timestamps).map{ |pass,user,time|
+                { username: user.to_s, password: pass.to_s, timestamp: time.to_i }
               }
             )
           ]

@@ -109,7 +109,7 @@ class PWS
       puts "--------------------------------"
       pa "#{real_key}", :yellow, :bright
       puts
-      puts "#{Paint['Username:',:bright]} #{@data[real_key][:username]}" if @data[real_key][:username]
+      puts "#{Paint['Username:',:bright]} #{@data[real_key][:username]}" unless @data[real_key][:username].empty?
 
       if seconds && seconds.to_i > 0
         original_clipboard_content = Clipboard.paste

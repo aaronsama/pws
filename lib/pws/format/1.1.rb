@@ -118,8 +118,6 @@ class PWS
             }
           }
 
-          puts [usernames,passwords].to_s
-
           Hash[
             names.zip(
               passwords.zip(usernames,timestamps).map{ |pass,user,time|

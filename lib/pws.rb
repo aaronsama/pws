@@ -132,7 +132,7 @@ class PWS
       end
 
     else
-      puts %[No password found for #{key}!], :red
+      pa %[No password found for #{key}!], :red
       return false
     end
   end

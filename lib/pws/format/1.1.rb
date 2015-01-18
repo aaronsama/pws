@@ -2,7 +2,7 @@
 
 require_relative '../format'
 require 'securerandom'
-require 'digest/hmac'
+# require 'digest/hmac'
 require 'openssl'
 require 'pbkdf2'
 
@@ -130,7 +130,8 @@ class PWS
         # support
 
         def hmac(key, *strings)
-          Digest::HMAC.new(key, Digest::SHA512).update(
+          #Digest::HMAC.new(key, Digest::SHA512).update(
+          OpenSSL::HMAC.new(key, OpenSSL::Digest::SHA512.new).update(
             strings.map(&:to_s).join
           ).digest
         end
